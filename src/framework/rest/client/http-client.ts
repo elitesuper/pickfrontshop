@@ -9,7 +9,6 @@ const Axios = axios.create({
   timeout: 5000000,
   headers: {
     'Content-Type': 'application/json',
-    'Content-Security-Policy': 'upgrade-insecure-requests',
   },
 });
 // Change request data/error here
