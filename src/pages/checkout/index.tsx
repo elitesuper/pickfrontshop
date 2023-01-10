@@ -51,7 +51,7 @@ export default function CheckoutPage() {
               atom={billingAddressAtom}
               type={AddressType.Billing}
             />
-            <AddressGrid
+            {/* <AddressGrid
               userId={me?.id!}
               className="p-5 bg-light shadow-700 md:p-8"
               label={t('text-shipping-address')}
@@ -62,12 +62,12 @@ export default function CheckoutPage() {
               )}
               atom={shippingAddressAtom}
               type={AddressType.Shipping}
-            />
-            <ScheduleGrid
+            /> */}
+            {/* <ScheduleGrid
               className="p-5 bg-light shadow-700 md:p-8"
               label={t('text-delivery-schedule')}
               count={4}
-            />
+            /> */}
           </div>
           <div className="w-full mt-10 mb-10 sm:mb-12 lg:mb-0 lg:w-96">
             <RightSideView />

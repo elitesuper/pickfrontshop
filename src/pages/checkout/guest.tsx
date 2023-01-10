@@ -62,7 +62,7 @@ export default function GuestCheckoutPage() {
               atom={billingAddressAtom}
               type={AddressType.Billing}
             />
-            <GuestAddressGrid
+            {/* <GuestAddressGrid
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-shipping-address')}
               count={4}
@@ -74,7 +74,7 @@ export default function GuestCheckoutPage() {
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-delivery-schedule')}
               count={5}
-            />
+            /> */}
           </div>
           <div className="mt-10 mb-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
             <RightSideView />
