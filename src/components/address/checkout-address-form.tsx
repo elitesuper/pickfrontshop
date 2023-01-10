@@ -57,13 +57,13 @@ export const CheckoutAddressForm: React.FC<any> = ({
     >
       {({ register, formState: { errors } }) => (
         <>
-          <Input
+          {/* <Input
             label={t('text-title')}
             {...register('title')}
             error={t(errors.title?.message!)}
             variant="outline"
             className="col-span-2"
-          />
+          /> */}
 
           <Input
             label={t('text-country')}
