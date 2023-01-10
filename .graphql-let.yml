@@ -1,4 +1,4 @@
-schema: http://35.244.55.178/backend/graphql
+schema: https://back.wowskinscienceindia.com/backend/graphql
 documents: ./src/framework/graphql/**/*.graphql
 plugins:
   - typescript-operations
