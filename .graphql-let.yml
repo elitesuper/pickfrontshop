@@ -1,4 +1,4 @@
-schema: https://3ffd-35-244-55-178.in.ngrok.io/backend/graphql
+schema: https://localhost/backend/graphql
 documents: ./src/framework/graphql/**/*.graphql
 plugins:
   - typescript-operations
