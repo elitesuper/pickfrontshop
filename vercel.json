@@ -1,8 +1,8 @@
 {
   "env": {
     "FRAMEWORK_PROVIDER": "graphql",
-    "NEXT_PUBLIC_REST_API_ENDPOINT": "http://34.93.17.23",
-    "NEXT_PUBLIC_GRAPHQL_API_ENDPOINT": "http://34.93.17.23/graphql",
+    "NEXT_PUBLIC_REST_API_ENDPOINT": "https://35.244.55.178/backend",
+    "NEXT_PUBLIC_GRAPHQL_API_ENDPOINT": "https://35.244.55.178/backend/graphql",
     "NEXT_PUBLIC_SITE_URL": "",
     "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "",
     "NEXT_PUBLIC_PAYPAL_CLIENT_TOKEN": "",
@@ -20,8 +20,8 @@
   "build": {
     "env": {
       "FRAMEWORK_PROVIDER": "graphql",
-      "NEXT_PUBLIC_REST_API_ENDPOINT": "http://34.93.17.23",
-      "NEXT_PUBLIC_GRAPHQL_API_ENDPOINT": "http://34.93.17.23/graphql",
+      "NEXT_PUBLIC_REST_API_ENDPOINT": "https://35.244.55.178/backend",
+      "NEXT_PUBLIC_GRAPHQL_API_ENDPOINT": "https://35.244.55.178/backend/graphql",
       "NEXT_PUBLIC_SITE_URL": "",
       "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "",
       "NEXT_PUBLIC_PAYPAL_CLIENT_TOKEN": "",
