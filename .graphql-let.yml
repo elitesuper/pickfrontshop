@@ -1,4 +1,4 @@
-schema: https://localhost/backend/graphql
+schema: http://localhost/backend/graphql
 documents: ./src/framework/graphql/**/*.graphql
 plugins:
   - typescript-operations
