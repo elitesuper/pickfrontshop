@@ -70,6 +70,7 @@ export const CheckoutAddressForm: React.FC<any> = ({
             {...register('address.country')}
             error={t(errors.address?.country?.message!)}
             variant="outline"
+            className="col-span-2"
           />
 
           <Input
@@ -77,6 +78,7 @@ export const CheckoutAddressForm: React.FC<any> = ({
             {...register('address.city')}
             error={t(errors.address?.city?.message!)}
             variant="outline"
+            className="col-span-2"
           />
 
           <Input
@@ -84,6 +86,7 @@ export const CheckoutAddressForm: React.FC<any> = ({
             {...register('address.state')}
             error={t(errors.address?.state?.message!)}
             variant="outline"
+            className="col-span-2"
           />
 
           <Input
@@ -91,6 +94,7 @@ export const CheckoutAddressForm: React.FC<any> = ({
             {...register('address.zip')}
             error={t(errors.address?.zip?.message!)}
             variant="outline"
+            className="col-span-2"
           />
 
           <TextArea
