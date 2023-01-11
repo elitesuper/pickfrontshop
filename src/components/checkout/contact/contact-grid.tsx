@@ -52,21 +52,23 @@ const ContactGrid = ({
           )}
           <p className="text-lg capitalize text-heading lg:text-xl">{label}</p>
         </div>
-
+      {/* 
         <button
           className="flex items-center text-sm font-semibold transition-colors duration-200 text-accent hover:text-accent-hover focus:text-accent-hover focus:outline-none"
           onClick={onAddOrChange}
         >
           <PlusIcon className="h-4 w-4 stroke-2 ltr:mr-0.5 rtl:ml-0.5" />
           {contactNumber ? t('text-update') : t('text-add')}
-        </button>
+        </button> */}
       </div>
 
       <div className={classNames('w-full', gridClassName)}>
         <PhoneInput
-          country="us"
+          country={"in"}
+          onlyCountries={["in"]}
+          countryCodeEditable={false}
           value={contactNumber}
-          disabled={true}
+          disabled={false}
           inputClass="!p-0 ltr:!pr-4 rtl:!pl-4 ltr:!pl-14 rtl:!pr-14 !flex !items-center !w-full !appearance-none !transition !duration-300 !ease-in-out !text-heading !text-sm focus:!outline-none focus:!ring-0 !border !border-border-base !rounded focus:!border-accent !h-12"
           dropdownClass="focus:!ring-0 !border !border-border-base !shadow-350"
         />
