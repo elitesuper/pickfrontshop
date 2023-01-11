@@ -84,7 +84,8 @@ export const CheckoutAddressForm: React.FC<any> = ({
           />
 
           <Input
-            label={t('text-zip')}
+            // label={t('text-zip')}
+            label="Pin Code"
             {...register('address.zip')}
             error={t(errors.address?.zip?.message!)}
             variant="outline"

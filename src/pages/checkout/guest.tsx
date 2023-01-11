@@ -52,11 +52,11 @@ export default function GuestCheckoutPage() {
               count={1}
             />
             <GuestName
-              label={t('Name')}
+              label={t('text-name')}
               count={2}
             />
             <GuestEmail
-              label='Email (Optional)'
+              label={t('text-email')}
               count={3}
             />
             <GuestAddressGrid
