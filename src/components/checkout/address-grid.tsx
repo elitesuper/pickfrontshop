@@ -6,6 +6,8 @@ import AddressCard from '@/components/address/address-card';
 import { AddressHeader } from '@/components/address/address-header';
 import { useTranslation } from 'next-i18next';
 import type { Address } from '@/types';
+import { CheckoutAddressHeader } from '@/components/address/checkout-address-header';
+import CreateOrUpdateCheckoutAddressForm from '@/components/address/checkout-address-form';
 
 interface AddressesProps {
   addresses: Address[] | undefined | null;
@@ -53,8 +55,9 @@ export const AddressGrid: React.FC<AddressesProps> = ({
 
   return (
     <div className={className}>
-      <AddressHeader onAdd={onAdd} count={count} label={label} />
-      {!addresses?.length ? (
+      {/* <AddressHeader onAdd={onAdd} count={count} label={label} /> */}
+      <CheckoutAddressHeader count={count} label={label}/>
+      {/* {!addresses?.length ? (
         <div className="grid grid-cols-1 gap-4">
           <span className="relative px-5 py-6 text-base text-center bg-gray-100 border rounded border-border-200">
             {t('text-no-address')}
@@ -78,7 +81,8 @@ export const AddressGrid: React.FC<AddressesProps> = ({
             ))}
           </div>
         </RadioGroup>
-      )}
+      )} */}
+      <CreateOrUpdateCheckoutAddressForm/>
     </div>
   );
 };
