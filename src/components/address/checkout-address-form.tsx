@@ -74,14 +74,6 @@ export const CheckoutAddressForm: React.FC<any> = ({
           /> */}
 
 
-         <Input
-            label="Email (Optional)"
-            {...register('address.city')}
-            error={t(errors.address?.city?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
-
           <TextArea
             label={t('text-street-address')}
             {...register('address.street_address')}
@@ -114,6 +106,14 @@ export const CheckoutAddressForm: React.FC<any> = ({
             className="col-span-2"
           />
 
+
+         <Input
+            label="Email (Optional)"
+            {...register('address.city')}
+            error={t(errors.address?.city?.message!)}
+            variant="outline"
+            className="col-span-2"
+          />
 
 
           <Button
