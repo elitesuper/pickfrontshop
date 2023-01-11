@@ -17,13 +17,19 @@ interface VerifiedResponse {
   wallet_currency: number;
 }
 
+interface CustomerName {
+  first_name: string | "",
+  last_name: string | ""
+}
+
 interface CheckoutState {
   billing_address: Address | null;
   shipping_address: Address | null;
   payment_gateway: PaymentGateway;
   delivery_time: DeliveryTime | null;
   customer_contact: string;
-  customer_name: string | null;
+  customer_name: CustomerName;
+  customer_email: string;
   verified_response: VerifiedResponse | null;
   coupon: Coupon | null;
   payable_amount: number;
@@ -38,7 +44,8 @@ export const defaultCheckout: CheckoutState = {
   delivery_time: null,
   payment_gateway: PaymentGateway.COD,
   customer_contact: '',
-  customer_name: '',
+  customer_name: {first_name:"", last_name:""},
+  customer_email:'',
   verified_response: null,
   coupon: null,
   payable_amount: 0,
@@ -94,11 +101,21 @@ export const customerContactAtom = atom(
 );
 export const guestNameAtom = atom(
   (get) => get(checkoutAtom).customer_name,
-  (get, set, data: string) => {
+  (get, set, data: CustomerName) => {
+    console.log(data);
     const prev = get(checkoutAtom);
     return set(checkoutAtom, { ...prev, customer_name: data });
   }
 );
+
+export const guestEmailAtom = atom(
+  (get) => get(checkoutAtom).customer_email,
+  (get, set, data: string) => {
+    const prev = get(checkoutAtom);
+    return set(checkoutAtom, { ...prev, customer_email: data });
+  }
+);
+
 export const verifiedResponseAtom = atom(
   (get) => get(checkoutAtom).verified_response,
   (get, set, data: VerifiedResponse | null) => {

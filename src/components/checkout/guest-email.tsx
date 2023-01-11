@@ -1,9 +1,9 @@
 import React from 'react';
-import { guestNameAtom } from '@/store/checkout';
+import { guestEmailAtom } from '@/store/checkout';
 import { useAtom } from 'jotai';
 import Input from '@/components/ui/forms/input';
 function GuestEmail({ count, label }: { count: number; label: string }) {
-    const [name, setName] = useAtom(guestNameAtom);
+    const [email, setEmail] = useAtom(guestEmailAtom);
     return (
         <div className="p-5 bg-light shadow-700 md:p-8">
             <div className="flex items-center justify-between mb-5 md:mb-8">
@@ -17,10 +17,9 @@ function GuestEmail({ count, label }: { count: number; label: string }) {
             <div className="block">
                 <Input
                     //@ts-ignore
-
-                    value={name}
-                    name="guestName"
-                    onChange={(e) => setName(e.target.value)}
+                    value={email}
+                    name="guestEmail"
+                    onChange={(e) => (setEmail(e.target.value))}
                     variant="outline"
                 />
             </div>
