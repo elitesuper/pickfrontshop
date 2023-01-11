@@ -102,7 +102,6 @@ export const customerContactAtom = atom(
 export const guestNameAtom = atom(
   (get) => get(checkoutAtom).customer_name,
   (get, set, data: CustomerName) => {
-    console.log(data);
     const prev = get(checkoutAtom);
     return set(checkoutAtom, { ...prev, customer_name: data });
   }
