@@ -11,6 +11,7 @@ import Seo from '@/components/seo/seo';
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 import GuestName from '@/components/checkout/guest-name';
+import GuestEmail from '@/components/checkout/guest-email';
 
 export { getStaticProps } from '@/framework/general.ssr';
 
@@ -54,10 +55,14 @@ export default function GuestCheckoutPage() {
               label={t('Name')}
               count={2}
             />
+            <GuestEmail
+              label='Email (Optional)'
+              count={3}
+            />
             <GuestAddressGrid
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-billing-address')}
-              count={3}
+              count={4}
               addresses={billingAddress ? [billingAddress] : []}
               atom={billingAddressAtom}
               type={AddressType.Billing}

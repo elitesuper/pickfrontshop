@@ -74,10 +74,19 @@ export const CheckoutAddressForm: React.FC<any> = ({
           /> */}
 
 
+
           <TextArea
             label={t('text-street-address')}
             {...register('address.street_address')}
             error={t(errors.address?.street_address?.message!)}
+            variant="outline"
+            className="col-span-2"
+          />
+
+          <Input
+            label={t('text-zip')}
+            {...register('address.zip')}
+            error={t(errors.address?.zip?.message!)}
             variant="outline"
             className="col-span-2"
           />
@@ -98,32 +107,24 @@ export const CheckoutAddressForm: React.FC<any> = ({
             className="col-span-2"
           />
 
-          <Input
-            label={t('text-zip')}
-            {...register('address.zip')}
-            error={t(errors.address?.zip?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
 
-
-         <Input
+         {/* <Input
             label="Email (Optional)"
             {...register('address.city')}
             error={t(errors.address?.city?.message!)}
             variant="outline"
             className="col-span-2"
-          />
+          /> */}
 
 
-          <Button
+          {/* <Button
             className="col-span-2 w-full"
             loading={isLoading}
             disabled={isLoading}
           >
             {Boolean(defaultValues) ? t('text-update') : t('text-save')}{' '}
             {t('text-address')}
-          </Button>
+          </Button> */}
         </>
       )}
     </Form>
@@ -147,7 +148,7 @@ export default function CreateOrUpdateCheckoutAddressForm() {
 
   }
   return (
-    <div className="min-h-screen bg-light p-5 sm:p-8 md:min-h-0 md:rounded-xl">
+    <div className="bg-light md:min-h-0 md:rounded-xl">
       <h1 className="mb-4 text-center text-lg font-semibold text-heading sm:mb-6">
         {/* {address ? t('text-update') : t('text-add-new')} {t('text-address')} */}
       </h1>
