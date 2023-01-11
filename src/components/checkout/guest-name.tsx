@@ -14,11 +14,19 @@ function GuestName({ count, label }: { count: number; label: string }) {
                     <p className="text-lg capitalize text-heading lg:text-xl">{label}</p>
                 </div>
             </div>
-            <div className="block">
+            <div className="grid h-full grid-cols-2 gap-5">
                 <Input
                     //@ts-ignore
-
-                    value={name}
+                    label={'First Name'}
+                    value={""}
+                    name="guestName"
+                    onChange={(e) => setName(e.target.value)}
+                    variant="outline"
+                />
+                <Input
+                    //@ts-ignore
+                    label={'Last Name'}
+                    value={""}
                     name="guestName"
                     onChange={(e) => setName(e.target.value)}
                     variant="outline"
