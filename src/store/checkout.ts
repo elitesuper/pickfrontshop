@@ -1,4 +1,4 @@
-import { Address, Coupon, PaymentGateway } from '@/types';
+import { BillingShippingAddress, Address, Coupon, PaymentGateway } from '@/types';
 import { CHECKOUT } from '@/lib/constants';
 import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
@@ -23,10 +23,11 @@ interface CustomerName {
 }
 
 interface CheckoutState {
-  billing_address: Address | null;
-  shipping_address: Address | null;
+  billing_shipping_address: BillingShippingAddress;
+  // billing_address: Address | null;
+  // shipping_address: Address | null;
   payment_gateway: PaymentGateway;
-  delivery_time: DeliveryTime | null;
+  // delivery_time: DeliveryTime | null;
   customer_contact: string;
   customer_name: CustomerName;
   customer_email: string;
@@ -39,9 +40,18 @@ interface CheckoutState {
 }
 
 export const defaultCheckout: CheckoutState = {
-  billing_address: null,
-  shipping_address: null,
-  delivery_time: null,
+   billing_shipping_address: {
+    id:"",
+    city:"",
+    country:"India",
+    street_address:"",
+    state:"",
+    zip:"",
+   },
+
+  // billing_address: null,
+  // shipping_address: null,
+  // delivery_time: null,
   payment_gateway: PaymentGateway.COD,
   customer_contact: '',
   customer_name: {first_name:"", last_name:""},
@@ -64,6 +74,17 @@ export const billingAddressAtom = atom(
     return set(checkoutAtom, { ...prev, billing_address: data });
   }
 );
+
+
+export const billingshippingAddressAtom = atom(
+  (get) => get(checkoutAtom).billing_shipping_address,
+  (get, set, data: BillingShippingAddress) => {
+    console.log(data);
+    const prev = get(checkoutAtom);
+    return set(checkoutAtom, { ...prev, billing_shipping_address: data });
+  }
+);
+
 export const shippingAddressAtom = atom(
   (get) => get(checkoutAtom).shipping_address,
   (get, set, data: Address) => {

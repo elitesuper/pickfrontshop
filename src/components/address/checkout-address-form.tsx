@@ -7,7 +7,11 @@ import { useTranslation } from 'next-i18next';
 import * as yup from 'yup';
 import { Form } from '@/components/ui/forms/form';
 import { AddressType } from '@/framework/utils/constants';
+import { useModalState } from '@/components/ui/modal/modal.context';
 import { useUpdateUser } from '@/framework/user';
+
+import { billingAddressAtom, billingshippingAddressAtom, shippingAddressAtom } from '@/store/checkout';
+import { useAtom } from 'jotai';
 
 type FormValues = {
   title: string;
@@ -36,126 +40,61 @@ const addressSchema = yup.object().shape({
   }),
 });
 
-export const CheckoutAddressForm: React.FC<any> = ({
-  onSubmit,
-  defaultValues,
-  isLoading,
-}) => {
+export const CheckoutAddressForm: React.FC<any> = () => {
+
+  const [billing_shipping_address, setBillingShippingAddress] = useAtom(billingshippingAddressAtom);
   const { t } = useTranslation('common');
 
   return (
-    <Form<FormValues>
-      onSubmit={onSubmit}
+    <div
       className="grid h-full grid-cols-2 gap-5"
-      //@ts-ignore
-      validationSchema={addressSchema}
-      useFormProps={{
-        shouldUnregister: true,
-        defaultValues,
-      }}
-      resetValues={defaultValues}
     >
-      {({ register, formState: { errors } }) => (
-        <>
-          {/* <Input
-            label={t('text-title')}
-            {...register('title')}
-            error={t(errors.title?.message!)}
-            variant="outline"
-            className="col-span-2"
-          /> */}
-{/* 
-          <Input
-            label={t('text-country')}
-            {...register('address.country')}
-            error={t(errors.address?.country?.message!)}
-            variant="outline"
-            className="col-span-2"
-          /> */}
-
-
-
-          <TextArea
-            label={t('text-street-address')}
-            {...register('address.street_address')}
-            error={t(errors.address?.street_address?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
-
-          <Input
-            // label={t('text-zip')}
-            label="Pin Code"
-            {...register('address.zip')}
-            error={t(errors.address?.zip?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
-
-          <Input
-            label={t('text-city')}
-            {...register('address.city')}
-            error={t(errors.address?.city?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
-
-          <Input
-            label={t('text-state')}
-            {...register('address.state')}
-            error={t(errors.address?.state?.message!)}
-            variant="outline"
-            className="col-span-2"
-          />
-
-
-         {/* <Input
-            label="Email (Optional)"
-            {...register('address.city')}
-            error={t(errors.address?.city?.message!)}
-            variant="outline"
-            className="col-span-2"
-          /> */}
-
-
-          {/* <Button
-            className="col-span-2 w-full"
-            loading={isLoading}
-            disabled={isLoading}
-          >
-            {Boolean(defaultValues) ? t('text-update') : t('text-save')}{' '}
-            {t('text-address')}
-          </Button> */}
-        </>
-      )}
-    </Form>
+      <TextArea
+        value = {billing_shipping_address?.street_address}
+        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, street_address:e.target.value})}
+        name="address"
+        label={t('text-street-address')}
+        variant="outline"
+        className="col-span-2"
+      />
+      <Input
+        // label={t('text-zip')}
+        value = {billing_shipping_address?.zip}
+        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, zip:e.target.value})}
+        name="pincode"
+        label="Pin Code"
+        variant="outline"
+        className="col-span-2"
+      />
+      <Input
+        value = {billing_shipping_address?.city}
+        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, city:e.target.value})}
+        name="city"
+        label={t('text-city')}
+        variant="outline"
+        className="col-span-2"
+      />
+      <Input
+        value = {billing_shipping_address?.state}
+        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, state:e.target.value})}
+        name="state"
+        label={t('text-state')}
+        variant="outline"
+        className="col-span-2"
+      />
+    </div>
   );
 };
 
 export default function CreateOrUpdateCheckoutAddressForm() {
   const { t } = useTranslation('common');
 
-  const { mutate: updateProfile } = useUpdateUser();
-
-  function onSubmit(values: FormValues) {
-    const formattedInput = {
-      // customer_id: customerId,
-      title: values.title,
-      type: values.type,
-      address: {
-        ...values.address,
-      },
-    };
-
-  }
   return (
     <div className="bg-light md:min-h-0 md:rounded-xl">
       <h1 className="mb-4 text-center text-lg font-semibold text-heading sm:mb-6">
         {/* {address ? t('text-update') : t('text-add-new')} {t('text-address')} */}
       </h1>
-      <CheckoutAddressForm
-        onSubmit={onSubmit}
-      />
+      <CheckoutAddressForm/>
     </div>
   );
 }

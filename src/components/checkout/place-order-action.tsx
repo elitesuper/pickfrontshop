@@ -28,15 +28,16 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
 
   const [
     {
-      billing_address,
-      shipping_address,
+      // billing_address,
+      // shipping_address,
+      billing_shipping_address,
       delivery_time,
       coupon,
       verified_response,
       customer_contact,
       customer_name,
       payment_gateway,
-      token,
+      // token,
     },
   ] = useAtom(checkoutAtom);
   const [discount] = useAtom(discountAtom);
@@ -72,7 +73,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       setErrorMessage('Gateway Is Required');
       return;
     }
-
+    const name = `${customer_name.first_name} ${customer_name.last_name}`
     let input = {
       //@ts-ignore
       products: available_items?.map((item) => formatOrderedProduct(item)),
@@ -83,20 +84,14 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       sales_tax: verified_response?.total_tax,
       delivery_fee: freeShippings?0:verified_response?.shipping_charge,
       total,
-      delivery_time: delivery_time?.title,
+      // delivery_time: delivery_time?.title,
       customer_contact,
-      customer_name,
+      name,
       payment_gateway,
       use_wallet_points,
-      billing_address: {
-        ...(billing_address?.address && billing_address.address),
-      },
-      shipping_address: {
-        ...(shipping_address?.address && shipping_address.address),
-      },
+      billing_address: billing_shipping_address
     };
-    delete input.billing_address.__typename;
-    delete input.shipping_address.__typename;
+    console.log(input);
     //@ts-ignore
     createOrder(input);
   };
@@ -109,13 +104,12 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
     : [
       customer_contact,
       payment_gateway,
-      billing_address,
-      shipping_address,
-      delivery_time,
+      billing_shipping_address,
       available_items,
     ];
   if (!isDigitalCheckout && !me) {
-    formatRequiredFields.push(customer_name);
+    const name = `${customer_name.first_name} ${customer_name.last_name}`
+    formatRequiredFields.push(name);
   }
 
   const isAllRequiredFieldSelected = formatRequiredFields.every(

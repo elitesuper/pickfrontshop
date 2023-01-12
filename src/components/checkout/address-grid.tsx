@@ -5,14 +5,14 @@ import { useEffect } from 'react';
 import AddressCard from '@/components/address/address-card';
 import { AddressHeader } from '@/components/address/address-header';
 import { useTranslation } from 'next-i18next';
-import type { Address } from '@/types';
+import type { Address, BillingShippingAddress } from '@/types';
 import { CheckoutAddressHeader } from '@/components/address/checkout-address-header';
 import CreateOrUpdateCheckoutAddressForm from '@/components/address/checkout-address-form';
 
 interface AddressesProps {
-  addresses: Address[] | undefined | null;
+  addresses: BillingShippingAddress[] | undefined | null;
   label: string;
-  atom: WritableAtom<Address | null, Address>;
+  atom: WritableAtom<BillingShippingAddress | null, BillingShippingAddress>;
   className?: string;
   userId: string;
   count: number;
