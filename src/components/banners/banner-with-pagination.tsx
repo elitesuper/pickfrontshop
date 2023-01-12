@@ -25,7 +25,7 @@ const BannerWithPagination: React.FC<BannerProps> = ({ banners, slug }) => {
             }}
             modules={[Pagination]}
             resizeObserver={true}
-            allowTouchMove={false}
+            allowTouchMove={true}
             slidesPerView={1}
             // pagination={true}
             pagination={{
