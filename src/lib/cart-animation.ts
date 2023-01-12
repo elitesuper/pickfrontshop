@@ -12,6 +12,9 @@ export const cartAnimation = (event: any) => {
   if (!imgToDrag) return;
 
   let viewCart = document.getElementsByClassName('product-cart')[0];
+  if(viewCart == null){
+    viewCart = document.getElementsByClassName('mobile-cart')[0];
+  }
   let imgToDragImage = imgToDrag.querySelector('.product-image');
 
   let disLeft = imgToDrag.getBoundingClientRect().left;

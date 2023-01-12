@@ -119,7 +119,7 @@ const Header = ({ layout }: { layout?: string }) => {
                   <motion.button
                     whileTap={{ scale: 0.88 }}
                     onClick={() => handleSidebar('cart')}
-                    className="product-cart relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+                    className="mobile-cart relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
                   >
                     <span className="sr-only">{t('text-cart')}</span>
                     <ShoppingBagIcon />
