@@ -19,6 +19,10 @@ const BannerWithPagination: React.FC<BannerProps> = ({ banners, slug }) => {
           <Swiper
             id="banner"
             loop={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
             modules={[Pagination]}
             resizeObserver={true}
             allowTouchMove={false}
