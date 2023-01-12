@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import {
   billingAddressAtom,
+  billingshippingAddressAtom,
   clearCheckoutAtom,
   shippingAddressAtom,
 } from '@/store/checkout';
@@ -34,7 +35,8 @@ export default function GuestCheckoutPage() {
   const { t } = useTranslation();
   const [, resetCheckout] = useAtom(clearCheckoutAtom);
   const [billingAddress] = useAtom(billingAddressAtom);
-  const [shippingAddress] = useAtom(shippingAddressAtom);
+  const [billingShippingAddress] = useAtom(billingshippingAddressAtom);
+  // const [shippingAddress] = useAtom(shippingAddressAtom);
   useEffect(() => {
     resetCheckout();
   }, [resetCheckout]);
@@ -63,8 +65,10 @@ export default function GuestCheckoutPage() {
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-billing-address')}
               count={4}
-              addresses={billingAddress ? [billingAddress] : []}
-              atom={billingAddressAtom}
+              // addresses={billingAddress ? [billingAddress] : []}
+              // atom={billingAddressAtom}
+              addresses={billingShippingAddress ? [billingShippingAddress] : []}
+              atom={billingshippingAddressAtom}
               type={AddressType.Billing}
             />
             {/* <GuestAddressGrid

@@ -25,7 +25,7 @@ export default function HomeLayout({
       )}
       <div className="min-h-screen">{children}</div>
       {['compact'].includes(layout) && <Footer />}
-      <MobileNavigation>
+      {/* <MobileNavigation>
         <motion.button
           whileTap={{ scale: 0.88 }}
           onClick={() => setDisplayMobileHeaderSearch((prev) => !prev)}
@@ -34,7 +34,7 @@ export default function HomeLayout({
           <span className="sr-only">{t('text-search')}</span>
           <SearchIcon width="17.05" height="18" />
         </motion.button>
-      </MobileNavigation>
+      </MobileNavigation> */}
     </div>
   );
 }

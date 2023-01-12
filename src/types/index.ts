@@ -475,6 +475,15 @@ enum RefundStatus {
   PROCESSING = 'Processing',
 }
 
+export interface BillingShippingAddress {
+  id: string;
+  country: string;
+  city:string;
+  state: string;
+  zip: string;
+  street_address: string;
+}
+
 export interface Address {
   id: string;
   title: string;
