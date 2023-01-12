@@ -10,6 +10,7 @@ import TopManufacturersGrid from '@/components/manufacturer/top-manufacturers-gr
 import { useTranslation } from 'next-i18next';
 import type { HomePageProps } from '@/types';
 import ProductGridHome from '@/components/products/grids/home';
+import BannerSection from '@/components/ui/banner-section';
 
 export default function CompactLayout({ variables }: HomePageProps) {
   const { t } = useTranslation('common');
@@ -17,9 +18,9 @@ export default function CompactLayout({ variables }: HomePageProps) {
     <div className="flex flex-1 flex-col bg-white">
       <FilterBar className="lg:hidden" variables={variables.categories} />
       <main className="mt-6 block w-full xl:overflow-hidden">
-        <SectionBlock>
+        <BannerSection>
           <Banner layout="compact" variables={variables.types} />
-        </SectionBlock>
+        </BannerSection>
         <PopularProductsGrid variables={variables.popularProducts} />
         <Categories layout="compact" variables={variables.categories} />
         <GroupProducts />
