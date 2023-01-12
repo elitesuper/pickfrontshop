@@ -11,6 +11,15 @@ import { useMemo } from 'react';
 import GroupsDropdownMenu from './menu/groups-menu';
 import { useHeaderSearch } from '@/layouts/headers/header-search-atom';
 import LanguageSwitcher from '@/components/ui/language-switcher';
+import { motion } from 'framer-motion';
+import { NavbarIcon } from '@/components/icons/navbar-icon';
+import { UserIcon } from '@/components/icons/user-icon';
+import { drawerAtom } from '@/store/drawer-atom';
+import { useIsRTL } from '@/lib/locals';
+import { useModalAction } from '@/components/ui/modal/modal.context';
+import { ShoppingBagIcon } from '@/components/icons/shopping-bag-icon';
+import { useCart } from '@/store/quick-cart/cart.context';
+
 
 const Search = dynamic(() => import('@/components/ui/search/search'));
 const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
@@ -19,8 +28,14 @@ const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
 const JoinButton = dynamic(() => import('./menu/join-button'), { ssr: false });
 
 const Header = ({ layout }: { layout?: string }) => {
+  const [_, setDrawerView] = useAtom(drawerAtom);
+  const { isRTL } = useIsRTL();
+
   const { t } = useTranslation('common');
+  const { openModal } = useModalAction();
   const { show, hideHeaderSearch } = useHeaderSearch();
+  const { totalUniqueItems } = useCart();
+
   const [displayMobileHeaderSearch] = useAtom(displayMobileHeaderSearchAtom);
   const [isAuthorize] = useAtom(authorizationAtom);
   const isHomePage = useIsHomePage();
@@ -33,6 +48,14 @@ const Header = ({ layout }: { layout?: string }) => {
   //     hideHeaderSearch();
   //   }
   // }, [isHomePage]);
+
+  function handleSidebar(view: string) {
+    setDrawerView({ display: true, view });
+  }
+
+  function handleJoin() {
+    return openModal('LOGIN_VIEW');
+  }
   const isFlattenHeader = useMemo(
     () => !show && isHomePage && layout !== 'modern',
     [show, isHomePage, layout]
@@ -81,7 +104,52 @@ const Header = ({ layout }: { layout?: string }) => {
 
             {displayMobileHeaderSearch && (
               <div className="absolute top-0 block h-full w-full bg-light px-5 pt-1.5 ltr:left-0 rtl:right-0 md:pt-2 lg:hidden">
-                <Search label={t('text-search-label')} variant="minimal" />
+                <div className='flex w-full'>
+                  <motion.button
+                    whileTap={{ scale: 0.88 }}
+                    onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+                    className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+                  >
+                    <span className="sr-only">{t('text-burger-menu')}</span>
+                    <NavbarIcon className={`${isRTL && 'rotate-180 transform'}`} />
+                  </motion.button>
+                  
+                  <Search label={t('text-search-label')} variant="minimal" />
+
+                  <motion.button
+                    whileTap={{ scale: 0.88 }}
+                    onClick={() => handleSidebar('cart')}
+                    className="product-cart relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+                  >
+                    <span className="sr-only">{t('text-cart')}</span>
+                    <ShoppingBagIcon />
+                    {totalUniqueItems > 0 && (
+                      <span className="absolute top-0 mt-0.5 rounded-full bg-accent py-1 px-1.5 text-10px font-semibold leading-none text-light ltr:right-0 ltr:-mr-0.5 rtl:left-0 rtl:-ml-0.5">
+                        {totalUniqueItems}
+                      </span>
+                    )}
+                  </motion.button>
+
+                  {isAuthorize ? (
+                    <motion.button
+                      whileTap={{ scale: 0.88 }}
+                      onClick={() => handleSidebar('AUTH_MENU_VIEW')}
+                      className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+                    >
+                      <span className="sr-only">{t('text-user')}</span>
+                      <UserIcon />
+                    </motion.button>
+                  ) : (
+                    <motion.button
+                      whileTap={{ scale: 0.88 }}
+                      onClick={handleJoin}
+                      className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+                    >
+                      <span className="sr-only">{t('text-user')}</span>
+                      <UserIcon />
+                    </motion.button>
+                  )}
+                </div>
               </div>
             )}
           </>

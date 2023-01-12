@@ -1,2 +1,2 @@
 import { atom } from 'jotai';
-export const displayMobileHeaderSearchAtom = atom(false);
+export const displayMobileHeaderSearchAtom = atom(true);
