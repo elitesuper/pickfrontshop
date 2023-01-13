@@ -49,7 +49,13 @@ const ProfileForm = ({ user }: { user: User }) => {
               <div className="mb-6 flex flex-row">
                 <Input
                   className="flex-1"
-                  label={t('text-name')}
+                  label={'First Name'}
+                  {...register('name')}
+                  variant="outline"
+                />
+                <Input
+                  className="flex-1"
+                  label={'Last Name'}
                   {...register('name')}
                   variant="outline"
                 />
