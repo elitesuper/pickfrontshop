@@ -1,5 +1,6 @@
 import SectionBlock from '@/components/ui/section-block';
-import FilterBar from './filter-bar';
+// import FilterBar from './filter-bar';
+import MobileLogoSearch from './mobilelogosearch';
 import Categories from '@/components/categories/categories';
 import CallToAction from '@/components/cta/call-to-action';
 import GroupProducts from '@/components/products/group-products';
@@ -16,7 +17,7 @@ export default function CompactLayout({ variables }: HomePageProps) {
   const { t } = useTranslation('common');
   return (
     <div className="flex flex-1 flex-col bg-white">
-      <FilterBar className="lg:hidden" variables={variables.categories} />
+      <MobileLogoSearch className="lg:hidden" variables={variables.categories} />
       <main className="mt-6 block w-full xl:overflow-hidden">
         <BannerSection>
           <Banner layout="compact" variables={variables.types} />
