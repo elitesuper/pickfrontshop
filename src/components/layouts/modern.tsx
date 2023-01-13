@@ -2,7 +2,8 @@ import Banner from '@/components/banners/banner';
 import Categories from '@/components/categories/categories';
 import { Element } from 'react-scroll';
 import ProductGridHome from '@/components/products/grids/home';
-import FilterBar from './filter-bar';
+// import FilterBar from './filter-bar';
+import MobileLogoSearch from './mobilelogosearch';
 import type { HomePageProps } from '@/types';
 
 export default function Modern({ variables }: HomePageProps) {
@@ -15,7 +16,7 @@ export default function Modern({ variables }: HomePageProps) {
         <div className="border border-border-200">
           <Banner layout="modern" variables={variables.types} />
         </div>
-        <FilterBar variables={variables.categories} />
+        <MobileLogoSearch variables={variables.categories} />
         <Element name="grid" className="px-4 xl:px-0">
           <ProductGridHome className="py-6" variables={variables.products} />
         </Element>

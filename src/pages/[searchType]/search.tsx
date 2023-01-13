@@ -81,21 +81,21 @@ const GetLayout = (page: React.ReactElement) => {
             {page}
           </div>
         </div>
-        {/* <MobileNavigation>
-          <motion.button
-            whileTap={{ scale: 0.88 }}
-            onClick={() =>
-              setDrawerView({
-                display: true,
-                view: 'SEARCH_FILTER',
-              })
-            }
-            className="flex h-full items-center justify-center p-2 focus:text-accent focus:outline-none"
-          >
-            <span className="sr-only">{t('text-filter')}</span>
-            <FilterIcon width="17.05" height="18" />
-          </motion.button>
-        </MobileNavigation> */}
+        {/* <MobileNavigation> */}
+        {/* <motion.button
+          whileTap={{ scale: 0.88 }}
+          onClick={() =>
+            setDrawerView({
+              display: true,
+              view: 'SEARCH_FILTER',
+            })
+          }
+          className="flex h-full items-center justify-center p-2 focus:text-accent focus:outline-none"
+        >
+          <span className="sr-only">{t('text-filter')}</span>
+          <FilterIcon width="17.05" height="18" />
+        </motion.button> */}
+        {/* </MobileNavigation> */}
       </>
     </GeneralLayout>
   );
