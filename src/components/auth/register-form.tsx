@@ -11,7 +11,8 @@ import * as yup from 'yup';
 import { useRegister } from '@/framework/user';
 
 const registerFormSchema = yup.object().shape({
-  name: yup.string().required('error-name-required'),
+  firstname: yup.string().required('error-name-required'),
+  lastname: yup.string().required('error-name-required'),
   email: yup
     .string()
     .email('error-email-format')
@@ -24,9 +25,10 @@ function RegisterForm() {
   const { openModal } = useModalAction();
   const { mutate, isLoading, formError } = useRegister();
 
-  function onSubmit({ name, email, password }: RegisterUserInput) {
+  function onSubmit({ firstname, lastname, email, password }: RegisterUserInput) {
     mutate({
-      name,
+      firstname,
+      lastname,
       email,
       password,
     });
@@ -42,11 +44,18 @@ function RegisterForm() {
         {({ register, formState: { errors } }) => (
           <>
             <Input
-              label={t('text-name')}
-              {...register('name')}
+              label={'First Name'}
+              {...register('firstname')}
               variant="outline"
               className="mb-5"
-              error={t(errors.name?.message!)}
+              error={t(errors.firstname?.message!)}
+            />
+            <Input
+              label={'Last Name'}
+              {...register('lastname')}
+              variant="outline"
+              className="mb-5"
+              error={t(errors.lastname?.message!)}
             />
             <Input
               label={t('text-email')}

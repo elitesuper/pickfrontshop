@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide, Pagination } from '@/components/ui/slider';
+import { Swiper, SwiperSlide, Pagination, Autoplay } from '@/components/ui/slider';
 import { Image } from '@/components/ui/image';
 import { productPlaceholder } from '@/lib/placeholders';
 import Link from '@/components/ui/link';
@@ -19,9 +19,13 @@ const BannerWithPagination: React.FC<BannerProps> = ({ banners, slug }) => {
           <Swiper
             id="banner"
             loop={true}
-            modules={[Pagination]}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            modules={[Pagination, Autoplay]}
             resizeObserver={true}
-            allowTouchMove={false}
+            allowTouchMove={true}
             slidesPerView={1}
             // pagination={true}
             pagination={{

@@ -29,7 +29,7 @@ interface CheckoutState {
   payment_gateway: PaymentGateway;
   // delivery_time: DeliveryTime | null;
   customer_contact: string;
-  customer_name: CustomerName;
+  guest_name: CustomerName;
   customer_email: string;
   verified_response: VerifiedResponse | null;
   coupon: Coupon | null;
@@ -54,7 +54,7 @@ export const defaultCheckout: CheckoutState = {
   // delivery_time: null,
   payment_gateway: PaymentGateway.COD,
   customer_contact: '',
-  customer_name: {first_name:"", last_name:""},
+  guest_name: {first_name:"", last_name:""},
   customer_email:'',
   verified_response: null,
   coupon: null,
@@ -121,10 +121,10 @@ export const customerContactAtom = atom(
   }
 );
 export const guestNameAtom = atom(
-  (get) => get(checkoutAtom).customer_name,
+  (get) => get(checkoutAtom).guest_name,
   (get, set, data: CustomerName) => {
     const prev = get(checkoutAtom);
-    return set(checkoutAtom, { ...prev, customer_name: data });
+    return set(checkoutAtom, { ...prev, guest_name: data });
   }
 );
 
