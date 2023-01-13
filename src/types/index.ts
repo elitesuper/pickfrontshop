@@ -542,7 +542,8 @@ export type SendOtpCodeInputType = {
 };
 
 export interface RegisterUserInput {
-  name: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
 }
