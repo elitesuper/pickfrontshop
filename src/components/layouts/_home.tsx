@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { useAtom } from 'jotai';
 import Header from './header';
 import HeaderMinimal from './header-minimal';
-import MobileNavigation from './mobile-navigation';
+// import MobileNavigation from './mobile-navigation';
 import Footer from './footer';
 import { SearchIcon } from '@/components/icons/search-icon';
 import { displayMobileHeaderSearchAtom } from '@/store/display-mobile-header-search-atom';
