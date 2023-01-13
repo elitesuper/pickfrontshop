@@ -57,7 +57,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
     <header className={cn('site-header-with-search h-14 md:h-16 lg:h-22')}>
       <div
         className={cn(
-          ' z-50 flex h-14 w-full items-center justify-between border-b border-border-200 bg-light px-4 py-5  shadow-sm transition-transform duration-300 md:h-16 lg:h-22 ltr:lg:pl-12 ltr:lg:pr-8 rtl:lg:pr-12 rtl:lg:pl-8',
+          ' fixed z-50 flex h-14 w-full items-center justify-between border-b border-border-200 bg-light px-4 py-5  shadow-sm transition-transform duration-300 md:h-16 lg:h-22 ltr:lg:pl-12 ltr:lg:pr-8 rtl:lg:pr-12 rtl:lg:pl-8',
           {
             'px-5 lg:!px-12 xl:px-16': layout === 'compact',
           }
@@ -77,7 +77,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
           <motion.button
             whileTap={{ scale: 0.88 }}
             onClick={() => handleSidebar('cart')}
-            className="mobile-cart relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+            className="mobile-cart lg:hidden relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-cart')}</span>
             <ShoppingBagIcon />
@@ -128,7 +128,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
           </ul>
         </div>
 
-        {/* {displayMobileHeaderSearch && (
+        {displayMobileHeaderSearch && (
           <div className="absolute top-0 block h-full w-full bg-light px-5 pt-1.5 ltr:left-0 rtl:right-0 md:pt-2 lg:hidden">
             <div className='flex w-full'>
               <motion.button
@@ -177,7 +177,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
               )}
             </div>
           </div>
-        )} */}
+        )}
 
         {layout === 'compact' && (
           <div className="mx-auto hidden w-full px-8 xl:flex xl:w-6/12 xl:px-10 xl:rtl:w-4/12 2xl:rtl:w-5/12">

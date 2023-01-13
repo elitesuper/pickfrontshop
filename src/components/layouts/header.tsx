@@ -68,7 +68,7 @@ const Header = ({ layout }: { layout?: string }) => {
     >
       <div
         className={cn(
-          ' z-50 flex h-14 w-full transform-gpu items-center justify-between border-b border-border-200 bg-light px-4 py-5 shadow-sm transition-transform duration-300 md:h-16 lg:h-22 lg:px-8',
+          'fixed z-50 flex h-14 w-full transform-gpu items-center justify-between border-b border-border-200 bg-light px-4 py-5 shadow-sm transition-transform duration-300 md:h-16 lg:h-22 lg:px-8',
           {
             'lg:absolute lg:border-0 lg:bg-transparent lg:shadow-none':
               isFlattenHeader,
@@ -91,7 +91,7 @@ const Header = ({ layout }: { layout?: string }) => {
           <motion.button
             whileTap={{ scale: 0.88 }}
             onClick={() => handleSidebar('cart')}
-            className="mobile-cart relative flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
+            className="mobile-cart relative flex h-full lg:hidden items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-cart')}</span>
             <ShoppingBagIcon />
@@ -192,7 +192,7 @@ const Header = ({ layout }: { layout?: string }) => {
             )}
 
             {displayMobileHeaderSearch && (
-              <div className="absolute top-14 block h-full w-full bg-light px-5 pt-1.5 ltr:left-0 rtl:right-0 md:pt-2 lg:hidden">
+              <div className="absolute top-0 block h-full w-full bg-light px-5 pt-1.5 ltr:left-0 rtl:right-0 md:pt-2 lg:hidden">
                 <div className='flex w-full'>
                   <motion.button
                     whileTap={{ scale: 0.88 }}
