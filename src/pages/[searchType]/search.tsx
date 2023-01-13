@@ -1,5 +1,5 @@
 import { FilterIcon } from '@/components/icons/filter-icon';
-import MobileNavigation from '@/components/layouts/mobile-navigation';
+// import MobileNavigation from '@/components/layouts/mobile-navigation';
 import GeneralLayout from '@/components/layouts/_general';
 import { Grid } from '@/components/products/grid';
 import SearchCount from '@/components/search-view/search-count';
@@ -81,7 +81,7 @@ const GetLayout = (page: React.ReactElement) => {
             {page}
           </div>
         </div>
-        <MobileNavigation>
+        {/* <MobileNavigation>
           <motion.button
             whileTap={{ scale: 0.88 }}
             onClick={() =>
@@ -95,7 +95,7 @@ const GetLayout = (page: React.ReactElement) => {
             <span className="sr-only">{t('text-filter')}</span>
             <FilterIcon width="17.05" height="18" />
           </motion.button>
-        </MobileNavigation>
+        </MobileNavigation> */}
       </>
     </GeneralLayout>
   );

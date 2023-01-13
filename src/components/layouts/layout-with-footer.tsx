@@ -2,7 +2,7 @@ import useLayout from '@/lib/hooks/use-layout';
 import Footer from './footer';
 import Header from './header';
 import HeaderMinimal from './header-minimal';
-import MobileNavigation from './mobile-navigation';
+// import MobileNavigation from './mobile-navigation';
 
 const SiteLayoutWithFooter: React.FC = ({ children }) => {
   const { layout } = useLayout();
@@ -10,7 +10,7 @@ const SiteLayoutWithFooter: React.FC = ({ children }) => {
     <div className="flex flex-col min-h-screen transition-colors duration-150 bg-gray-100">
       {layout === 'minimal' ? <HeaderMinimal layout={layout} /> : <Header layout={layout} />}
       {children}
-      <MobileNavigation />
+      {/* <MobileNavigation /> */}
       <Footer />
     </div>
   );

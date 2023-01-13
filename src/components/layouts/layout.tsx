@@ -1,7 +1,7 @@
 import useLayout from '@/lib/hooks/use-layout';
 import Header from './header';
 import HeaderMinimal from './header-minimal';
-import MobileNavigation from './mobile-navigation';
+// import MobileNavigation from './mobile-navigation';
 import Footer from './footer';
 
 export default function SiteLayout({ children }: React.PropsWithChildren<{}>) {
@@ -15,7 +15,7 @@ export default function SiteLayout({ children }: React.PropsWithChildren<{}>) {
       )}
       {children}
       {['compact'].includes(layout) && <Footer />}
-      <MobileNavigation />
+      {/* <MobileNavigation /> */}
     </div>
   );
 }
