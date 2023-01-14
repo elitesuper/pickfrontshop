@@ -72,6 +72,7 @@ function RegisterForm() {
               variant="outline"
               className="mb-5"
             />
+            
             <div className="mt-8">
               <Button
                 className="h-12 w-full"
