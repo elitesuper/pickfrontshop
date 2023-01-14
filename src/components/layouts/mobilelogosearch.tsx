@@ -35,16 +35,16 @@ export default function MobileLogoSearch({
     const [headerhide, setHeaderHide] = useState(true);
 
     useEffect(() => {
-        console.log("ffffffffffffffff")
+        // console.log("ffffffffffffffff")
         if (intersection && intersection.isIntersecting) {
             //   setHeaderHide(true);
-            setDisplayMobileHeaderSearch((prev) => !prev)
-            console.log(true)
+            setDisplayMobileHeaderSearch(false)
+            // console.log(true)
             return;
         }
         if (intersection && !intersection.isIntersecting) {
-            console.log(false)
-            setDisplayMobileHeaderSearch((prev) => !prev)
+            // console.log(false)
+            setDisplayMobileHeaderSearch(true)
             //   setHeaderHide(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
