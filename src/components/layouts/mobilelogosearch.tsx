@@ -35,16 +35,16 @@ export default function MobileLogoSearch({
     const [headerhide, setHeaderHide] = useState(true);
 
     useEffect(() => {
-        console.log("ffffffffffffffff")
+        // console.log("ffffffffffffffff")
         if (intersection && intersection.isIntersecting) {
             //   setHeaderHide(true);
-            setDisplayMobileHeaderSearch((prev) => !prev)
-            console.log(true)
+            setDisplayMobileHeaderSearch(false)
+            // console.log(true)
             return;
         }
         if (intersection && !intersection.isIntersecting) {
-            console.log(false)
-            setDisplayMobileHeaderSearch((prev) => !prev)
+            // console.log(false)
+            setDisplayMobileHeaderSearch(true)
             //   setHeaderHide(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +55,7 @@ export default function MobileLogoSearch({
     return (
         <div
             className={classNames(
-                'z-10 flex h-14 items-center justify-between border-b border-border-200 bg-light py-3 px-5 md:top-16 md:h-16 lg:top-22 lg:px-7 xl:hidden',
+                'z-10 flex h-14 items-center justify-between border-b border-border-200 bg-light py-3 px-5 md:top-16 md:h-16 lg:top-22 lg:px-7 lg:hidden',
                 className
             )}
             ref={intersectionRef}
