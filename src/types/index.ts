@@ -215,6 +215,7 @@ export interface Category {
 export interface Banner {
   id: string;
   title: string;
+  link:string;
   description: string;
   image: Attachment;
 }
