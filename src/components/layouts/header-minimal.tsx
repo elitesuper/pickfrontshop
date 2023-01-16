@@ -34,7 +34,7 @@ const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
 });
 const JoinButton = dynamic(() => import('./menu/join-button'), { ssr: false });
 
-const HeaderMinimal = ({ layout }: { layout: string }) => {
+const HeaderMinimal = ({ layout, variables }: { layout: string, variables: any }) => {
   const router = useRouter();
   const [_, setDrawerView] = useAtom(drawerAtom);
   const { isRTL } = useIsRTL();
@@ -67,7 +67,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
           {/* <Logo className="mx-auto lg:mx-0" /> */}
           <motion.button
             whileTap={{ scale: 0.88 }}
-            onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+            onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: variables })}
             className="flex h-full lg:hidden items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-burger-menu')}</span>
@@ -133,7 +133,8 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
             <div className='flex w-full'>
               <motion.button
                 whileTap={{ scale: 0.88 }}
-                onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+                onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: variables })}
+
                 className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
               >
                 <span className="sr-only">{t('text-burger-menu')}</span>

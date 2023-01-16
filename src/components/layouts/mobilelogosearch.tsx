@@ -2,9 +2,14 @@
 import { useTranslation } from 'next-i18next';
 import { useAtom } from 'jotai';
 import { drawerAtom } from '@/store/drawer-atom';
+import { Swiper, SwiperSlide, Pagination, Autoplay } from '@/components/ui/slider';
+import Link from '@/components/ui/link';
+import { useCategories } from '@/framework/category';
+
 // import GroupsDropdownMenu from './menu/groups-menu';
 import classNames from 'classnames';
 import { displayMobileHeaderSearchAtom } from '@/store/display-mobile-header-search-atom';
+
 
 const Search = dynamic(() => import('@/components/ui/search/search'));
 
@@ -30,7 +35,9 @@ export default function MobileLogoSearch({
         displayMobileHeaderSearchAtom
     );
 
+    const { categories } = useCategories();
 
+    console.log(variables.categories);
     const [_, setDrawerView] = useAtom(drawerAtom);
     const [headerhide, setHeaderHide] = useState(true);
 
@@ -55,13 +62,43 @@ export default function MobileLogoSearch({
     return (
         <div
             className={classNames(
-                'z-10 flex h-14 items-center justify-between border-b border-border-200 bg-light py-3 px-5 md:top-16 md:h-16 lg:top-22 lg:px-7 lg:hidden',
+                'z-10 block h-40 items-center justify-between border-b border-border-200 bg-light py-3 px-5 md:top-16 md:h-16 lg:top-22 lg:px-7 lg:hidden',
                 className
             )}
             ref={intersectionRef}
         >
-            <Search label={t('text-search-label')} variant="minimal" />
-
+            <div className='w-full'>
+                <Search label={t('text-search-label')} variant="minimal" />
+            </div>
+            {/* <div className='w-full'>
+                <Swiper
+                    id="mobile-category-under-searchbox"
+                    loop={true}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Pagination, Autoplay]}
+                    resizeObserver={true}
+                    allowTouchMove={true}
+                    slidesPerView={6}
+                // pagination={true}
+                // pagination={{
+                //     // clickableClass: 'cursor-pointer',
+                //     // clickable: true,
+                // }}
+                >
+                    {categories.map((item, idx) => (
+                        <SwiperSlide key={idx}>
+                            <Link href={`${idx}`}>
+                                <div className="relative h-full max-h-[240px] w-full md:max-h-[610px]">
+                                    {item.name}
+                                </div>
+                            </Link>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div> */}
             {/* <GroupsDropdownMenu /> */}
         </div>
     );

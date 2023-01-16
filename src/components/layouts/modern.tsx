@@ -2,7 +2,7 @@ import Banner from '@/components/banners/banner';
 import Categories from '@/components/categories/categories';
 import { Element } from 'react-scroll';
 import ProductGridHome from '@/components/products/grids/home';
-// import FilterBar from './filter-bar';
+import FilterBar from './filter-bar';
 import MobileLogoSearch from './mobilelogosearch';
 import type { HomePageProps } from '@/types';
 

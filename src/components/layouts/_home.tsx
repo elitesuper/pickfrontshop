@@ -11,7 +11,8 @@ import { displayMobileHeaderSearchAtom } from '@/store/display-mobile-header-sea
 export default function HomeLayout({
   children,
   layout,
-}: React.PropsWithChildren<{ layout: string }>) {
+  variables,
+}: React.PropsWithChildren<{ layout: string, variables: any }>) {
   const { t } = useTranslation('common');
   const [, setDisplayMobileHeaderSearch] = useAtom(
     displayMobileHeaderSearchAtom
@@ -19,9 +20,9 @@ export default function HomeLayout({
   return (
     <div className="flex flex-col min-h-screen transition-colors duration-150 bg-gray-100">
       {['minimal', 'compact'].includes(layout) ? (
-        <HeaderMinimal layout={layout} />
+        <HeaderMinimal variables={variables.categories} layout={layout} />
       ) : (
-        <Header layout={layout} />
+        <Header variables={variables.categories} layout={layout} />
       )}
       <div className="min-h-screen">{children}</div>
       {['compact'].includes(layout) && <Footer />}
