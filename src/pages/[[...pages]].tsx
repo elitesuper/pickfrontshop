@@ -59,7 +59,7 @@ const Home: NextPageWithLayout<
 };
 
 Home.getLayout = function getLayout(page) {
-  return <HomeLayout layout={page.props.layout}>{page}</HomeLayout>;
+  return <HomeLayout variables={page.props.variables} layout={page.props.layout}>{page}</HomeLayout>;
 };
 
 export default Home;

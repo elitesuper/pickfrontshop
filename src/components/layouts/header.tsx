@@ -19,6 +19,7 @@ import { useIsRTL } from '@/lib/locals';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { ShoppingBagIcon } from '@/components/icons/shopping-bag-icon';
 import { useCart } from '@/store/quick-cart/cart.context';
+import { useCategories } from '@/framework/category';
 
 
 const Search = dynamic(() => import('@/components/ui/search/search'));
@@ -27,7 +28,7 @@ const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
 });
 const JoinButton = dynamic(() => import('./menu/join-button'), { ssr: false });
 
-const Header = ({ layout }: { layout?: string }) => {
+const Header = ({ layout, variables }: { layout?: string, variables: any }) => {
   const [_, setDrawerView] = useAtom(drawerAtom);
   const { isRTL } = useIsRTL();
 
@@ -36,6 +37,9 @@ const Header = ({ layout }: { layout?: string }) => {
   const { show, hideHeaderSearch } = useHeaderSearch();
   const { totalUniqueItems } = useCart();
 
+  const { categories } = useCategories();
+
+  // console.log(categories);
   const [displayMobileHeaderSearch] = useAtom(displayMobileHeaderSearchAtom);
   const [isAuthorize] = useAtom(authorizationAtom);
   const isHomePage = useIsHomePage();
@@ -78,7 +82,7 @@ const Header = ({ layout }: { layout?: string }) => {
         <div className="flex w-full items-center lg:w-auto">
           <motion.button
             whileTap={{ scale: 0.88 }}
-            onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+            onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: variables })}
             className="flex h-full lg:hidden items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-burger-menu')}</span>
@@ -187,7 +191,7 @@ const Header = ({ layout }: { layout?: string }) => {
           <>
             {(show || layout === 'modern') && (
               <div className="mx-auto hidden w-full overflow-hidden px-10 lg:block xl:w-11/12 2xl:w-10/12">
-                <Search label={t('text-search-label')} variant="minimal" />
+                {/* <Search label={t('text-search-label')} variant="minimal" /> */}
               </div>
             )}
 
@@ -196,7 +200,8 @@ const Header = ({ layout }: { layout?: string }) => {
                 <div className='flex w-full'>
                   <motion.button
                     whileTap={{ scale: 0.88 }}
-                    onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+                    onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: variables })}
+
                     className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
                   >
                     <span className="sr-only">{t('text-burger-menu')}</span>
