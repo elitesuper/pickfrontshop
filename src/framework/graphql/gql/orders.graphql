@@ -4,9 +4,10 @@
 fragment OrderParts on Order {
   id
   tracking_number
-  customer_name
+  customer_id
   customer_contact
   customer_name
+  customer_email
   language
   customer {
     name
