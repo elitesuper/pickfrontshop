@@ -27,9 +27,9 @@ const addressSchema = yup.object().shape({
     .string()
     .oneOf([AddressType.Billing, AddressType.Shipping])
     .required('error-type-required'),
-  title: yup.string().required('error-title-required'),
+  // title: yup.string().required('error-title-required'),
   address: yup.object().shape({
-    country: yup.string().required('error-country-required'),
+    // country: yup.string().required('error-country-required'),
     city: yup.string().required('error-city-required'),
     state: yup.string().required('error-state-required'),
     zip: yup.string().required('error-zip-required'),
@@ -79,17 +79,35 @@ export const AddressForm: React.FC<any> = ({
           </div>
 
           <Input
+            value={"Billing Address"}
             label={t('text-title')}
             {...register('title')}
             error={t(errors.title?.message!)}
             variant="outline"
-            className="col-span-2"
+            className="col-span-2 hidden"
           />
 
+          <TextArea
+            label={t('text-street-address')}
+            {...register('address.street_address')}
+            error={t(errors.address?.street_address?.message!)}
+            variant="outline"
+            className="col-span-2"
+          />
           <Input
+            value={"India"}
+            disabled={true}
             label={t('text-country')}
             {...register('address.country')}
             error={t(errors.address?.country?.message!)}
+            variant="outline"
+          />
+
+          <Input
+            // label={t('text-zip')}
+            label={'Post Code'}
+            {...register('address.zip')}
+            error={t(errors.address?.zip?.message!)}
             variant="outline"
           />
 
@@ -105,21 +123,6 @@ export const AddressForm: React.FC<any> = ({
             {...register('address.state')}
             error={t(errors.address?.state?.message!)}
             variant="outline"
-          />
-
-          <Input
-            label={t('text-zip')}
-            {...register('address.zip')}
-            error={t(errors.address?.zip?.message!)}
-            variant="outline"
-          />
-
-          <TextArea
-            label={t('text-street-address')}
-            {...register('address.street_address')}
-            error={t(errors.address?.street_address?.message!)}
-            variant="outline"
-            className="col-span-2"
           />
 
           <Button
@@ -147,10 +150,15 @@ export default function CreateOrUpdateAddressForm() {
     const formattedInput = {
       id: address?.id,
       // customer_id: customerId,
-      title: values.title,
+      title: 'Billing Address',
       type: values.type,
       address: {
-        ...values.address,
+        country: "India",
+        city: values.address.city,
+        state: values.address.state,
+        zip: values.address.zip,
+        street_address: values.address.street_address,
+        // ...values.address,
       },
     };
     updateProfile({
