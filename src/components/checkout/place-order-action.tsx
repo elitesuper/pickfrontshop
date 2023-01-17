@@ -34,7 +34,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       coupon,
       verified_response,
       customer_contact,
-      customer_name,
+      guest_name,
       customer_email,
       payment_gateway,
       token,
@@ -74,6 +74,8 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       return;
     }
 
+    let customer_name:string = `${guest_name.first_name} ${guest_name.last_name}`;
+
     let input = {
       //@ts-ignore
       products: available_items?.map((item) => formatOrderedProduct(item)),
@@ -86,8 +88,8 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       total,
       // delivery_time: delivery_time?.title,
       customer_contact,
-      // customer_name,
-      // customer_email,
+      customer_name,
+      customer_email,
       payment_gateway,
       use_wallet_points,
       billing_address: {
@@ -119,6 +121,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       available_items,
     ];
   if (!isDigitalCheckout && !me) {
+    const customer_name = `${guest_name.first_name} ${guest_name.last_name}`
     formatRequiredFields.push(customer_name);
     formatRequiredFields.push(customer_email);
   }

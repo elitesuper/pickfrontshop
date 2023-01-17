@@ -18,8 +18,8 @@ interface VerifiedResponse {
 }
 
 interface CustomerName {
-  first_name: string | "",
-  last_name: string | ""
+  first_name: string;
+  last_name: string;
 }
 
 interface CheckoutState {
@@ -28,7 +28,10 @@ interface CheckoutState {
   payment_gateway: PaymentGateway;
   // delivery_time: DeliveryTime | null;
   customer_contact: string;
-  customer_name: string | "";
+
+  guest_name: CustomerName;
+
+  // customer_name: string | "";
   customer_email: string | "";
   // customer_email: string;
   verified_response: VerifiedResponse | null;
@@ -48,7 +51,7 @@ export const defaultCheckout: CheckoutState = {
   customer_contact: '',
   guest_name: {first_name:"", last_name:""},
   customer_email:'',
-  customer_name: '',
+  // customer_name: '',
   verified_response: null,
   coupon: null,
   payable_amount: 0,
@@ -113,10 +116,10 @@ export const customerContactAtom = atom(
   }
 );
 export const guestNameAtom = atom(
-  (get) => get(checkoutAtom).customer_name,
-  (get, set, data: string) => {
+  (get) => get(checkoutAtom).guest_name,
+  (get, set, data: CustomerName) => {
     const prev = get(checkoutAtom);
-    return set(checkoutAtom, { ...prev, customer_name: data });
+    return set(checkoutAtom, { ...prev, guest_name: data });
   }
 );
 
