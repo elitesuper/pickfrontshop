@@ -79,7 +79,6 @@ export const billingAddressAtom = atom(
 export const billingshippingAddressAtom = atom(
   (get) => get(checkoutAtom).billing_shipping_address,
   (get, set, data: BillingShippingAddress) => {
-    console.log(data);
     const prev = get(checkoutAtom);
     return set(checkoutAtom, { ...prev, billing_shipping_address: data });
   }
