@@ -29,6 +29,7 @@ interface CheckoutState {
   // delivery_time: DeliveryTime | null;
   customer_contact: string;
   customer_name: string | "";
+  customer_email: string | "";
   // customer_email: string;
   verified_response: VerifiedResponse | null;
   coupon: Coupon | null;
@@ -46,7 +47,7 @@ export const defaultCheckout: CheckoutState = {
   payment_gateway: PaymentGateway.COD,
   customer_contact: '',
   guest_name: {first_name:"", last_name:""},
-  // customer_email:'',
+  customer_email:'',
   customer_name: '',
   verified_response: null,
   coupon: null,

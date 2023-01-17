@@ -35,6 +35,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       verified_response,
       customer_contact,
       customer_name,
+      customer_email,
       payment_gateway,
       token,
     },
@@ -85,7 +86,8 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       total,
       // delivery_time: delivery_time?.title,
       customer_contact,
-      customer_name,
+      // customer_name,
+      // customer_email,
       payment_gateway,
       use_wallet_points,
       billing_address: {
@@ -118,6 +120,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
     ];
   if (!isDigitalCheckout && !me) {
     formatRequiredFields.push(customer_name);
+    formatRequiredFields.push(customer_email);
   }
 
   const isAllRequiredFieldSelected = formatRequiredFields.every(
