@@ -69,7 +69,7 @@ export default function CheckoutPage() {
               count={4}
             /> */}
           </div>
-          <div className="w-full mt-10 mb-10 sm:mb-12 lg:mb-0 lg:w-96">
+          <div className="w-full mt-10 mb-10 sm:mb-12 lg:mb-0 lg:w-96 px-1">
             <RightSideView />
           </div>
         </div>

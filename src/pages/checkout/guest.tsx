@@ -81,7 +81,7 @@ export default function GuestCheckoutPage() {
               count={5}
             /> */}
           </div>
-          <div className="mt-10 mb-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
+          <div className="mt-10 mb-10 w-full sm:mb-12 lg:mb-0 lg:w-96 px-1">
             <RightSideView />
           </div>
         </div>
