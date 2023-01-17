@@ -41,6 +41,7 @@ export default function OtpCodeForm({
                 control={control}
                 render={({ field: { onChange, onBlur, value } }) => (
                   <MobileOtpInput
+                    isInputNum={true}
                     value={value}
                     onChange={onChange}
                     numInputs={6}
