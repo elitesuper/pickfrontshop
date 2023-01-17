@@ -52,13 +52,13 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
 
   const { homePage }: any = useHomepage();
 
-  const defaulttype = router.query.pages ? router.query.pages[0] : homePage.slug  
+  const defaulttype = router.query.pages ? router.query.pages[0] : homePage.slug
 
-  const ctypes : Categorytype = {
+  const ctypes: Categorytype = {
     type: defaulttype,
     limit: 1000,
     language: "en",
-    parent : "null",
+    parent: "null",
   }
 
   const { t } = useTranslation('common');
@@ -153,7 +153,8 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
             <div className='flex w-full'>
               <motion.button
                 whileTap={{ scale: 0.88 }}
-                onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+                onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: ctypes })}
+
                 className="flex h-full items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
               >
                 <span className="sr-only">{t('text-burger-menu')}</span>

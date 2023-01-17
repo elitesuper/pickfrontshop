@@ -18,7 +18,7 @@ export default function CompactLayout({ variables }: HomePageProps) {
   return (
     <div className="flex flex-1 flex-col bg-white">
       <MobileLogoSearch className="lg:hidden" variables={variables.categories} />
-      <main className="mt-6 block w-full xl:overflow-hidden">
+      <main className="relative block w-full xl:overflow-hidden">
         <BannerSection>
           <Banner layout="compact" variables={variables.types} />
         </BannerSection>
