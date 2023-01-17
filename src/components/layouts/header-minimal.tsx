@@ -22,6 +22,7 @@ import { useIsRTL } from '@/lib/locals';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { ShoppingBagIcon } from '@/components/icons/shopping-bag-icon';
 import { useCart } from '@/store/quick-cart/cart.context';
+import useHomepage from '@/lib/hooks/use-homepage';
 
 const CartCounterIconButton = dynamic(
   () => import('@/components/cart/cart-counter-icon-button'),
@@ -34,12 +35,31 @@ const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
 });
 const JoinButton = dynamic(() => import('./menu/join-button'), { ssr: false });
 
+interface Categorytype {
+  type: string;
+  limit: number;
+  language: string;
+  parent: string;
+}
+
 const HeaderMinimal = ({ layout }: { layout: string }) => {
   const router = useRouter();
   const [_, setDrawerView] = useAtom(drawerAtom);
   const { isRTL } = useIsRTL();
   const { totalUniqueItems } = useCart();
   const { openModal } = useModalAction();
+
+
+  const { homePage }: any = useHomepage();
+
+  const defaulttype = router.query.pages ? router.query.pages[0] : homePage.slug  
+
+  const ctypes : Categorytype = {
+    type: defaulttype,
+    limit: 1000,
+    language: "en",
+    parent : "null",
+  }
 
   const { t } = useTranslation('common');
   const [displayMobileHeaderSearch] = useAtom(displayMobileHeaderSearchAtom);
@@ -67,7 +87,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
           {/* <Logo className="mx-auto lg:mx-0" /> */}
           <motion.button
             whileTap={{ scale: 0.88 }}
-            onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+            onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: ctypes })}
             className="flex h-full lg:hidden items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-burger-menu')}</span>

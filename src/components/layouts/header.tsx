@@ -19,6 +19,10 @@ import { useIsRTL } from '@/lib/locals';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { ShoppingBagIcon } from '@/components/icons/shopping-bag-icon';
 import { useCart } from '@/store/quick-cart/cart.context';
+import useHomepage from '@/lib/hooks/use-homepage';
+import { useRouter } from 'next/router';
+
+
 
 
 const Search = dynamic(() => import('@/components/ui/search/search'));
@@ -27,10 +31,31 @@ const AuthorizedMenu = dynamic(() => import('./menu/authorized-menu'), {
 });
 const JoinButton = dynamic(() => import('./menu/join-button'), { ssr: false });
 
+interface Categorytype {
+  type: string;
+  limit: number;
+  language: string;
+  parent: string;
+}
+
 const Header = ({ layout }: { layout?: string }) => {
   const [_, setDrawerView] = useAtom(drawerAtom);
   const { isRTL } = useIsRTL();
 
+  const router = useRouter();
+
+
+  const { homePage }: any = useHomepage();
+
+  const defaulttype = router.query.pages ? router.query.pages[0] : homePage.slug  
+
+  const ctypes : Categorytype = {
+    type: defaulttype,
+    limit: 1000,
+    language: "en",
+    parent : "null",
+  }
+  
   const { t } = useTranslation('common');
   const { openModal } = useModalAction();
   const { show, hideHeaderSearch } = useHeaderSearch();
@@ -78,7 +103,7 @@ const Header = ({ layout }: { layout?: string }) => {
         <div className="flex w-full items-center lg:w-auto">
           <motion.button
             whileTap={{ scale: 0.88 }}
-            onClick={() => handleSidebar('MAIN_MENU_VIEW')}
+            onClick={() => setDrawerView({ display: true, view: 'FILTER_VIEW', data: ctypes })}
             className="flex h-full lg:hidden items-center justify-center p-2 my-auto focus:text-accent focus:outline-none"
           >
             <span className="sr-only">{t('text-burger-menu')}</span>
