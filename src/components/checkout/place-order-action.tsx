@@ -37,6 +37,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       guest_name,
       customer_email,
       payment_gateway,
+      guestbillingaddress,
       token,
     },
   ] = useAtom(checkoutAtom);
@@ -93,7 +94,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       payment_gateway,
       use_wallet_points,
       billing_address: {
-        ...(billing_address?.address && billing_address.address),
+        ...(billing_address?.address ? billing_address.address : guestbillingaddress),
       },
       /*
       shipping_address: {
@@ -101,7 +102,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       },
       */
     };
-    delete input.billing_address.__typename;
+    // delete input.billing_address.__typename;
     // delete input.shipping_address.__typename;
     //@ts-ignore
     createOrder(input);
@@ -115,7 +116,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
     : [
       customer_contact,
       payment_gateway,
-      billing_address,
+      (me)?billing_address:guestbillingaddress,
       // shipping_address,
       // delivery_time,
       available_items,

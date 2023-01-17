@@ -21,6 +21,10 @@ const ScheduleGrid = dynamic(
 const GuestAddressGrid = dynamic(
   () => import('@/components/checkout/address-grid-guest')
 );
+
+const ContactGridGuest = dynamic(
+  () => import('@/components/checkout/contact/contact-grid-guest')
+);
 const ContactGrid = dynamic(
   () => import('@/components/checkout/contact/contact-grid')
 );
@@ -45,7 +49,7 @@ export default function GuestCheckoutPage() {
       <div className="bg-gray-100 px-4 py-8 lg:py-10 lg:px-8 xl:py-14 xl:px-16 2xl:px-20">
         <div className="m-auto flex w-full max-w-5xl flex-col items-center rtl:space-x-reverse lg:flex-row lg:items-start lg:space-x-8">
           <div className="w-full space-y-6 lg:max-w-2xl">
-            <ContactGrid
+            <ContactGridGuest
               className="bg-light p-5 shadow-700 md:p-8"
               contact={null}
               label={t('text-contact-number')}
@@ -67,19 +71,6 @@ export default function GuestCheckoutPage() {
               atom={billingAddressAtom}
               type={AddressType.Billing}
             />
-            {/* <GuestAddressGrid
-              className="bg-light p-5 shadow-700 md:p-8"
-              label={t('text-shipping-address')}
-              count={4}
-              addresses={shippingAddress ? [shippingAddress] : []}
-              atom={shippingAddressAtom}
-              type={AddressType.Shipping}
-            /> */}
-            {/* <ScheduleGrid
-              className="bg-light p-5 shadow-700 md:p-8"
-              label={t('text-delivery-schedule')}
-              count={5}
-            /> */}
           </div>
           <div className="mt-10 mb-10 w-full sm:mb-12 lg:mb-0 lg:w-96 px-1">
             <RightSideView />

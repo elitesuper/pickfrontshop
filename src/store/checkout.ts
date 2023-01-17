@@ -30,6 +30,8 @@ interface CheckoutState {
   customer_contact: string;
 
   guest_name: CustomerName;
+  
+  guestbillingaddress: BillingShippingAddress;
 
   // customer_name: string | "";
   customer_email: string | "";
@@ -43,6 +45,15 @@ interface CheckoutState {
 }
 
 export const defaultCheckout: CheckoutState = {
+
+  guestbillingaddress: {
+    id:"",
+    city:"",
+    country:"India",
+    street_address:"",
+    state:"",
+    zip:"",
+   },
 
   billing_address: null,
   // shipping_address: null,
@@ -115,6 +126,15 @@ export const customerContactAtom = atom(
     return set(checkoutAtom, { ...prev, customer_contact: data });
   }
 );
+
+export const guestBillingAddressAtom = atom(
+  (get) => get(checkoutAtom).guestbillingaddress,
+  (get, set, data: BillingShippingAddress) => {
+    const prev = get(checkoutAtom);
+    return set(checkoutAtom, { ...prev, guestbillingaddress: data });
+  }
+);
+
 export const guestNameAtom = atom(
   (get) => get(checkoutAtom).guest_name,
   (get, set, data: CustomerName) => {

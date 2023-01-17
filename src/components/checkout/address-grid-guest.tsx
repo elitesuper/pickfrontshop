@@ -5,6 +5,8 @@ import { useAtom, WritableAtom } from 'jotai';
 import AddressCard from '@/components/address/address-card';
 import { AddressHeader } from '@/components/address/address-header';
 import { useTranslation } from 'next-i18next';
+import { CheckoutAddressForm } from '../address/checkout-address-form';
+import { CheckoutAddressHeader } from '../address/checkout-address-header';
 
 interface AddressesProps {
   addresses: Address[] | undefined;
@@ -24,44 +26,12 @@ export const GuestAddressGrid: React.FC<AddressesProps> = ({
   type,
 }) => {
   const { t } = useTranslation('common');
-  const [selectedAddress, setAddress] = useAtom(atom);
-  const { openModal } = useModalAction();
 
-  function onAdd() {
-    openModal('ADD_OR_UPDATE_GUEST_ADDRESS', { type, atom });
-  }
-
-  function onEdit(address: any) {
-    openModal('ADD_OR_UPDATE_GUEST_ADDRESS', { type, atom, address });
-  }
 
   return (
     <div className={className}>
-      <AddressHeader onAdd={onAdd} count={count} label={label} />
-      {addresses && addresses?.length ? (
-        <RadioGroup as="span" value={selectedAddress} onChange={setAddress}>
-          <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {addresses?.map((address) => (
-              <RadioGroup.Option value={address} key={address?.id}>
-                {({ checked }) => (
-                  <AddressCard
-                    checked={checked}
-                    address={address}
-                    onEdit={() => onEdit(address)}
-                  />
-                )}
-              </RadioGroup.Option>
-            ))}
-          </div>
-        </RadioGroup>
-      ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          <span className="relative rounded border border-border-200 bg-gray-100 px-5 py-6 text-center text-base">
-            {t('text-no-address')}
-          </span>
-        </div>
-      )}
+      <CheckoutAddressHeader count={count} label={label}/>
+      <CheckoutAddressForm></CheckoutAddressForm>
     </div>
   );
 };
