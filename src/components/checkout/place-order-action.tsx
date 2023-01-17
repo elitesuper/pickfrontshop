@@ -28,16 +28,15 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
 
   const [
     {
-      // billing_address,
+      billing_address,
       // shipping_address,
-      billing_shipping_address,
-      delivery_time,
+      // delivery_time,
       coupon,
       verified_response,
       customer_contact,
-      guest_name,
+      customer_name,
       payment_gateway,
-      // token,
+      token,
     },
   ] = useAtom(checkoutAtom);
   const [discount] = useAtom(discountAtom);
@@ -73,7 +72,7 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       setErrorMessage('Gateway Is Required');
       return;
     }
-    const customer_name = `${guest_name.first_name} ${guest_name.last_name}`
+
     let input = {
       //@ts-ignore
       products: available_items?.map((item) => formatOrderedProduct(item)),
@@ -89,9 +88,17 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
       customer_name,
       payment_gateway,
       use_wallet_points,
-      billing_address: billing_shipping_address
+      billing_address: {
+        ...(billing_address?.address && billing_address.address),
+      },
+      /*
+      shipping_address: {
+        ...(shipping_address?.address && shipping_address.address),
+      },
+      */
     };
-    console.log(input);
+    delete input.billing_address.__typename;
+    // delete input.shipping_address.__typename;
     //@ts-ignore
     createOrder(input);
   };
@@ -104,11 +111,12 @@ export const PlaceOrderAction: React.FC<{ className?: string }> = (props) => {
     : [
       customer_contact,
       payment_gateway,
-      billing_shipping_address,
+      billing_address,
+      // shipping_address,
+      // delivery_time,
       available_items,
     ];
   if (!isDigitalCheckout && !me) {
-    const customer_name = `${guest_name.first_name} ${guest_name.last_name}`
     formatRequiredFields.push(customer_name);
   }
 

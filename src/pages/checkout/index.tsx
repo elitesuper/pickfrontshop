@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { billingAddressAtom, billingshippingAddressAtom, shippingAddressAtom } from '@/store/checkout';
+import { billingAddressAtom, shippingAddressAtom } from '@/store/checkout';
 import dynamic from 'next/dynamic';
 import { getLayout } from '@/components/layouts/layout';
 import { AddressType } from '@/framework/utils/constants';
@@ -48,8 +48,7 @@ export default function CheckoutPage() {
               addresses={address?.filter(
                 (item) => item?.type === AddressType.Billing
               )}
-              // atom={billingAddressAtom}
-              atom = {billingshippingAddressAtom}
+              atom={billingAddressAtom}
               type={AddressType.Billing}
             />
             {/* <AddressGrid

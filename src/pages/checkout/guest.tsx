@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import {
   billingAddressAtom,
-  billingshippingAddressAtom,
   clearCheckoutAtom,
   shippingAddressAtom,
 } from '@/store/checkout';
@@ -12,7 +11,6 @@ import Seo from '@/components/seo/seo';
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 import GuestName from '@/components/checkout/guest-name';
-import GuestEmail from '@/components/checkout/guest-email';
 
 export { getStaticProps } from '@/framework/general.ssr';
 
@@ -35,8 +33,7 @@ export default function GuestCheckoutPage() {
   const { t } = useTranslation();
   const [, resetCheckout] = useAtom(clearCheckoutAtom);
   const [billingAddress] = useAtom(billingAddressAtom);
-  const [billingShippingAddress] = useAtom(billingshippingAddressAtom);
-  // const [shippingAddress] = useAtom(shippingAddressAtom);
+  const [shippingAddress] = useAtom(shippingAddressAtom);
   useEffect(() => {
     resetCheckout();
   }, [resetCheckout]);
@@ -54,21 +51,15 @@ export default function GuestCheckoutPage() {
               count={1}
             />
             <GuestName
-              label={t('text-name')}
+              label={t('Name')}
               count={2}
-            />
-            <GuestEmail
-              label={t('text-email')}
-              count={3}
             />
             <GuestAddressGrid
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-billing-address')}
-              count={4}
-              // addresses={billingAddress ? [billingAddress] : []}
-              // atom={billingAddressAtom}
-              addresses={billingShippingAddress ? [billingShippingAddress] : []}
-              atom={billingshippingAddressAtom}
+              count={3}
+              addresses={billingAddress ? [billingAddress] : []}
+              atom={billingAddressAtom}
               type={AddressType.Billing}
             />
             {/* <GuestAddressGrid
@@ -78,8 +69,8 @@ export default function GuestCheckoutPage() {
               addresses={shippingAddress ? [shippingAddress] : []}
               atom={shippingAddressAtom}
               type={AddressType.Shipping}
-            />
-            <ScheduleGrid
+            /> */}
+            {/* <ScheduleGrid
               className="bg-light p-5 shadow-700 md:p-8"
               label={t('text-delivery-schedule')}
               count={5}

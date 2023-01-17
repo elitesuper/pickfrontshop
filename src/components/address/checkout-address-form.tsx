@@ -42,47 +42,48 @@ const addressSchema = yup.object().shape({
 
 export const CheckoutAddressForm: React.FC<any> = () => {
 
-  const [billing_shipping_address, setBillingShippingAddress] = useAtom(billingshippingAddressAtom);
+  // const [billing_shipping_address, setBillingShippingAddress] = useAtom(billingshippingAddressAtom);
   const { t } = useTranslation('common');
 
   return (
-    <div
-      className="grid h-full grid-cols-2 gap-5"
-    >
-      <TextArea
-        value = {billing_shipping_address?.street_address}
-        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, street_address:e.target.value})}
-        name="address"
-        label={t('text-street-address')}
-        variant="outline"
-        className="col-span-2"
-      />
-      <Input
-        // label={t('text-zip')}
-        value = {billing_shipping_address?.zip}
-        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, zip:e.target.value})}
-        name="pincode"
-        label="Pin Code"
-        variant="outline"
-        className="col-span-2"
-      />
-      <Input
-        value = {billing_shipping_address?.city}
-        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, city:e.target.value})}
-        name="city"
-        label={t('text-city')}
-        variant="outline"
-        className="col-span-2"
-      />
-      <Input
-        value = {billing_shipping_address?.state}
-        onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, state:e.target.value})}
-        name="state"
-        label={t('text-state')}
-        variant="outline"
-        className="col-span-2"
-      />
-    </div>
+    <></>
+    // <div
+    //   className="grid h-full grid-cols-2 gap-5"
+    // >
+    //   <TextArea
+    //     value = {billing_shipping_address?.street_address}
+    //     onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, street_address:e.target.value})}
+    //     name="address"
+    //     label={t('text-street-address')}
+    //     variant="outline"
+    //     className="col-span-2"
+    //   />
+    //   <Input
+    //     // label={t('text-zip')}
+    //     value = {billing_shipping_address?.zip}
+    //     onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, zip:e.target.value})}
+    //     name="pincode"
+    //     label="Pin Code"
+    //     variant="outline"
+    //     className="col-span-2"
+    //   />
+    //   <Input
+    //     value = {billing_shipping_address?.city}
+    //     onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, city:e.target.value})}
+    //     name="city"
+    //     label={t('text-city')}
+    //     variant="outline"
+    //     className="col-span-2"
+    //   />
+    //   <Input
+    //     value = {billing_shipping_address?.state}
+    //     onChange= {(e)=> setBillingShippingAddress({...billing_shipping_address, state:e.target.value})}
+    //     name="state"
+    //     label={t('text-state')}
+    //     variant="outline"
+    //     className="col-span-2"
+    //   />
+    // </div>
   );
 };
 

@@ -12,6 +12,7 @@ export const CheckAvailabilityAction: React.FC<{ className?: string }> = (
   props
 ) => {
   // const [billing_shipping_address] = useAtom(billingshippingAddressAtom);
+  const [billing_address] = useAtom(billingAddressAtom);
   // const [shipping_address] = useAtom(shippingAddressAtom);
   const { items, total, isEmpty } = useCart();
 
@@ -21,11 +22,10 @@ export const CheckAvailabilityAction: React.FC<{ className?: string }> = (
     verifyCheckout({
       amount: total,
       products: items?.map((item) => formatOrderedProduct(item)),
-      // billing_shipping_address: {
-      //   ...(billing_shipping_address?.street_address &&
-      //     omit(billing_address.address, ['__typename'])),
-      // }
-      // ,
+      billing_address: {
+        ...(billing_address?.address &&
+          omit(billing_address.address, ['__typename'])),
+      },
       // shipping_address: {
       //   ...(shipping_address?.address &&
       //     omit(shipping_address.address, ['__typename'])),

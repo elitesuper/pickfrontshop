@@ -68,13 +68,13 @@ export const AddressForm: React.FC<any> = ({
                 value={AddressType.Billing}
                 label={t('text-billing')}
               />
-              <Radio
+              {/* <Radio
                 id="shipping"
                 {...register('type')}
                 type="radio"
                 value={AddressType.Shipping}
                 label={t('text-shipping')}
-              />
+              /> */}
             </div>
           </div>
 
@@ -141,12 +141,9 @@ export default function CreateOrUpdateAddressForm() {
   const {
     data: { customerId, address, type },
   } = useModalState();
-
   const { mutate: updateProfile } = useUpdateUser();
 
   function onSubmit(values: FormValues) {
-    console.log("dsadffffffffffffff");
-
     const formattedInput = {
       id: address?.id,
       // customer_id: customerId,
