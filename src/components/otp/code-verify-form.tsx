@@ -1,4 +1,4 @@
-import MobileOtpInput from '@zyda/react-otp-input';
+import MobileOtpInput from 'react-otp-input';
 import Button from '@/components/ui/button';
 import Label from '@/components/ui/forms/label';
 import { useModalAction } from '@/components/ui/modal/modal.context';
@@ -42,7 +42,6 @@ export default function OtpCodeForm({
                 render={({ field: { onChange, onBlur, value } }) => (
                   <MobileOtpInput
                     isInputNum={true}
-                    isInputSecure={true}
                     value={value}
                     onChange={onChange}
                     numInputs={6}

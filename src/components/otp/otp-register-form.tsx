@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import MobileOtpInput from '@zyda/react-otp-input';
+import MobileOtpInput from 'react-otp-input';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/forms/input';
 import Label from '@/components/ui/forms/label';
@@ -69,7 +69,6 @@ export default function OtpRegisterForm({
                     onChange={onChange}
                     numInputs={6}
                     isInputNum={true}
-                    isInputSecure={true}
                     separator={
                       <span className="hidden sm:inline-block">-</span>
                     }
