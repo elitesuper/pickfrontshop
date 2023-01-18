@@ -61,7 +61,7 @@ export default function OtpCodeForm({
 
 
             <div className="mb-5">
-              <Label>{t('text-otp-code')}</Label>
+              {/* <Label>{t('text-otp-code')}</Label> */}
               <Controller
                 control={control}
                 render={({ field: { onChange, onBlur, value } }) => (
