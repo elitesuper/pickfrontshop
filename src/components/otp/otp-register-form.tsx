@@ -68,6 +68,8 @@ export default function OtpRegisterForm({
                     value={value}
                     onChange={onChange}
                     numInputs={6}
+                    isInputNum={true}
+                    isInputSecure={true}
                     separator={
                       <span className="hidden sm:inline-block">-</span>
                     }
