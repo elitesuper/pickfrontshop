@@ -89,7 +89,8 @@ export default function OtpRegisterForm({
               variant="outline"
               className="mb-5"
               maxLength={6}
-              autoComplete={"on"}
+              autoComplete={"one-time-code"}
+              autoFocus={true}
               error={t(errors.code?.message!)}
             />
             <div className="grid grid-cols-2 gap-5">

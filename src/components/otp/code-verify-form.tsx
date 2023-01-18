@@ -74,7 +74,8 @@ export default function OtpCodeForm({
                     variant="outline"
                     className="mb-5 text-center"
                     maxLength={6}
-                    autoComplete={"on"}
+                    autoComplete={"one-time-code"}
+                    autoFocus={true}
                     error={t(errors.code?.message!)}
                   />
 
