@@ -36,6 +36,8 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       name,
       error,
       children,
+      maxLength,
+      autoComplete = 'off',
       variant = 'normal',
       dimension = 'medium',
       shadow = false,
@@ -61,6 +63,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           name={name}
           type={type}
           ref={ref}
+          maxLength={maxLength}
           className={cn(
             'flex w-full appearance-none items-center px-4 text-sm text-heading transition duration-300 ease-in-out focus:outline-none focus:ring-0',
             shadow && 'focus:shadow',
@@ -70,7 +73,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
             inputClassName
           )}
           disabled={disabled}
-          autoComplete="off"
+          autoComplete={autoComplete}
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck="false"

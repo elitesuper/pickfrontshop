@@ -59,7 +59,7 @@ export default function OtpRegisterForm({
               error={t(errors.name?.message!)}
             />
 
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <Label>{t('text-otp-code')}</Label>
               <Controller
                 control={control}
@@ -80,8 +80,18 @@ export default function OtpRegisterForm({
                 name="code"
                 defaultValue=""
               />
-            </div>
+            </div> */}
 
+            <Input
+              type='password'
+              label={t('text-otp-code')}
+              {...register('code')}
+              variant="outline"
+              className="mb-5"
+              maxLength={6}
+              autoComplete={"on"}
+              error={t(errors.code?.message!)}
+            />
             <div className="grid grid-cols-2 gap-5">
               <Button
                 variant="outline"

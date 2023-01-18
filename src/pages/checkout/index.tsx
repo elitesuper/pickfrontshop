@@ -46,7 +46,7 @@ export default function CheckoutPage() {
               count={2}
               //@ts-ignore
               addresses={address?.filter(
-                (item) => item?.type === AddressType.Billing
+                (item:any) => item?.type === AddressType.Billing
               )}
               atom={billingAddressAtom}
               type={AddressType.Billing}

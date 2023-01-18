@@ -3,6 +3,7 @@ import Button from '@/components/ui/button';
 import Label from '@/components/ui/forms/label';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { Form } from '@/components/ui/forms/form';
+import Input from '@/components/ui/forms/input';
 import { Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { useTranslation } from 'next-i18next';
@@ -35,7 +36,7 @@ export default function OtpCodeForm({
       >
         {({ control, formState: { errors } }) => (
           <>
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <Label>{t('text-otp-code')}</Label>
               <Controller
                 control={control}
@@ -56,7 +57,33 @@ export default function OtpCodeForm({
                 name="code"
                 defaultValue=""
               />
+            </div> */}
+
+
+            <div className="mb-5">
+              <Label>{t('text-otp-code')}</Label>
+              <Controller
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+
+                  <Input
+                    type='password'
+                    label={t('text-otp-code')}
+                    onChange={onChange}
+                    name="code"
+                    variant="outline"
+                    className="mb-5 text-center"
+                    maxLength={6}
+                    autoComplete={"on"}
+                    error={t(errors.code?.message!)}
+                  />
+
+                )}
+                name="code"
+                defaultValue=""
+              />
             </div>
+
             <div className="grid grid-cols-2 gap-5">
               <Button
                 variant="outline"
