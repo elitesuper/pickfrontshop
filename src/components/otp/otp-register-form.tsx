@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import MobileOtpInput from 'react-otp-input';
+import MobileOtpInput from '@zyda/react-otp-input';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/forms/input';
 import Label from '@/components/ui/forms/label';
